@@ -1,0 +1,47 @@
+# @package _global_
+
+defaults:
+  - /model@model.autoencoder: vae_s
+  - /model@model.map_autoencoder: map_vae_waymo
+
+  - override /data: waymo_seq
+  - override /optimizer: adamw
+  - override /scheduler: cosine
+  - override /model: diffusion_seq_cond
+  - override /losses: default_diffusion
+  - override /metrics: default_diffusion
+  - override /visualizers: default
+
+model:
+  latent_size: 16
+  autoencoder:
+    latent_channels: 16
+    num_channels: 35
+    pretrained: "../../pretrained_models/waymo_baseline/wsvae.ckpt"
+  map_autoencoder:
+    pretrained: "../../pretrained_models/waymo/scene_gen/mvae.ckpt"
+
+callbacks:
+  checkpoints/best:
+    monitor: val/metrics/jsd
+
+data:
+  loaders:
+    val:
+      shuffle: true
+      batch_size: 4
+      num_workers: 4
+    train:
+      batch_size: 4
+      num_workers: 4
+
+trainer:
+  limit_val_batches: 0.1
+  check_val_every_n_epoch: 6
+  max_epochs: 30
+  strategy:
+    _target_: lightning.pytorch.strategies.DDPStrategy
+    find_unused_parameters: True
+
+optimizer:
+  lr: 1.0e-5

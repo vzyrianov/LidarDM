@@ -1,0 +1,59 @@
+
+################################################################################
+# training parameters
+################################################################################
+train:
+  max_epochs: 20
+  lr: 0.002               # sgd learning rate
+  wup_epochs: 0.5         # warmup during first XX epochs (can be float)
+  momentum: 0.9           # sgd momentum
+  lr_decay: 0.99          # learning rate decay per epoch after initial cycle (from min lr)
+  w_decay: 0.0001         # weight decay
+  batch_size: 8           # batch size
+  report_batch: 1         # every x batches, report loss
+  report_batch_image: 100 # every x batches, save image to wandb
+  report_epoch: 1         # every x epochs, report validation set
+  workers: 12             # number of threads to get data
+
+val:
+  report_batch_image: 50  # every x batches, save image to wandb
+
+################################################################################
+# backbone parameters
+################################################################################
+backbone:
+  name: "squeezesegV2"  # ['squeezeseg', 'squeezesegV2', 'darknet']
+  dropout: 0.01
+  OS: 16 # output stride (only horizontally)
+  bn_d: 0.01
+  train: True # train backbone?
+  extra: False
+
+################################################################################
+# decoder parameters
+################################################################################
+decoder:
+  name: "squeezesegV2" # ['squeezeseg', 'squeezesegV2', 'darknet']
+  dropout: 0.01
+  bn_d: 0.01
+  train: True # train decoder?
+  extra: False # nothing to add for this decoder, otherwise this is a dict
+
+################################################################################
+# classification head parameters
+################################################################################
+head:
+  name: "raydropping"
+  train: True
+  dropout: 0.01
+
+################################################################################
+# classification head parameters
+################################################################################
+# dataset (to find parser)
+dataset:
+  labels: "waymo"
+  img_prop:
+    width: 2048
+    height: 64
+

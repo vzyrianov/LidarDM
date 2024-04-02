@@ -1,0 +1,40 @@
+visualizers:
+  planner_viz_gt:
+    _target_: lidardm.core.visualizers.PlanVisualizer
+    output_key: "plan/plan_gt"
+    plan: "plan"
+
+  planner_viz_predicted:
+    _target_: lidardm.core.visualizers.PlanVisualizer
+    output_key: "plan/plan_predicted"
+    plan: "predicted_plan"
+
+
+
+
+  planner_bank_viz_gt:
+    _target_: lidardm.core.visualizers.PlanVisualizer
+    output_key: "plan_trajbank/plan_gt"
+    plan: "plan"
+    traj_bank_path: "../../_datasets/trajbank.npy"
+
+  planner_bank_viz_predicted:
+    _target_: lidardm.core.visualizers.PlanVisualizer
+    output_key: "plan_trajbank/plan_predicted"
+    plan: "predicted_plan"
+    traj_bank_path: "../../_datasets/trajbank.npy"
+
+
+
+
+    
+  cost_viz_gt:
+    _target_: lidardm.core.visualizers.CostVisualizer
+    output_key: "cost/cost_gt"
+    plan: "plan"
+
+  cost_viz_predicted:
+    _target_: lidardm.core.visualizers.CostVisualizer
+    output_key: "cost/cost_predicted"
+    plan: "predicted_plan"
+

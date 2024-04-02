@@ -1,0 +1,4 @@
+modules:
+  latent:
+    _target_: lidardm.core.losses.KLDivergenceLoss
+    latent_key: lidar/latent

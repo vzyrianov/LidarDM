@@ -1,0 +1,5 @@
+modules:
+  recon:
+    _target_: lidardm.core.losses.BinaryCrossEntropyLoss
+    output_key: lidar/recon
+    target_key: lidar

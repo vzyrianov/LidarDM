@@ -1,0 +1,7 @@
+_target_: lidardm.core.models.LiDARVAE
+num_channels: ???
+latent_channels: 8
+down_block_types: ["DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D"]
+up_block_types: ["UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D"]
+layers_per_block: 2
+block_out_channels: [128, 128, 256, 512, 512]

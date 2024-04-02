@@ -1,0 +1,35 @@
+# @package _global_
+
+defaults:
+  - override /data: waymo_fields
+  - override /optimizer: adamw
+  - override /scheduler: cosine
+  - override /model: map_vae_waymo
+  - override /losses: default_map
+  - override /metrics: no_metrics
+  - override /callbacks: default_map
+  - override /visualizers: default
+
+model:
+  num_channels: 9 
+  layers_per_block: 1 
+  block_out_channels: [64, 64, 128, 256, 512] 
+  down_block_types: ["DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D"]
+  up_block_types: ["UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D"]
+
+trainer:
+  max_epochs: 5 
+  gradient_clip_val: 1.0 
+
+losses:
+  modules:
+    recon:
+      output_key: bev/recon
+      target_key: bev
+    latent:
+      latent_key: bev/latent
+  weights:
+    latent: 1.0e-7
+
+optimizer:
+  lr: 1.0e-4

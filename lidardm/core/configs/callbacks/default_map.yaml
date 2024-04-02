@@ -1,0 +1,9 @@
+checkpoints/latest:
+  _target_: lightning.pytorch.callbacks.ModelCheckpoint
+  dirpath: ${run.dir}/checkpoints/
+  filename: latest
+  every_n_epochs: 1
+
+monitors/lr:
+  _target_: lightning.pytorch.callbacks.LearningRateMonitor
+  logging_interval: epoch

@@ -1,0 +1,8 @@
+defaults:
+- latent
+
+modules:
+  recon_field:
+    _target_: lidardm.core.losses.SigmoidMSELoss
+    target_key: field
+    output_key: field/recon

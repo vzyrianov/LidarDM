@@ -1,0 +1,22 @@
+defaults:
+  - _self_
+  - data: ???
+  - model: ???
+  - optimizer: ???
+  - scheduler: ???
+  - losses: ???
+  - metrics: ???
+  - visualizers: ???
+  - trainer: default
+  - loggers: default
+  - callbacks: default
+
+run:
+  project: lidargen
+  id: ${now:%y%m%d-%H%M%S}
+  dir: ${hydra:runtime.output_dir}
+  seed: 2023
+
+hydra:
+  run:
+    dir: ./runs/${run.id}/

@@ -1,0 +1,10 @@
+
+_target_: lidardm.core.models.PlanningResnet
+
+down_channels: [256, 128, 128, 64]
+up_channels: [64, 64, 32, 16]
+
+in_channels: 184
+out_channels: 10
+
+append_map: True

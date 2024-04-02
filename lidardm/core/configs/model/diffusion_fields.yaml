@@ -1,0 +1,16 @@
+_target_: lidardm.core.models.DiffusionPipelineField
+
+autoencoder: ???
+
+unet: 
+  _target_: lidardm.core.models.unet.UNet2DModelSimple
+  sample_size: 64
+  in_channels: 8
+  out_channels: 8
+  down_block_types: ["DownBlock2D", "AttnDownBlock2D", "AttnDownBlock2D", "AttnDownBlock2D"]
+  up_block_types: ["AttnUpBlock2D", "AttnUpBlock2D", "AttnUpBlock2D", "UpBlock2D"]
+  block_out_channels: [448, 640, 896, 1280]
+  layers_per_block: 2
+  
+  attention_head_dim: 8
+  norm_num_groups: 32

@@ -1,0 +1,24 @@
+# @package _global_
+
+defaults:
+  - override /data: waymo_planning
+  - override /optimizer: adamw
+  - override /scheduler: cosine
+  - override /model: planning_resnet
+  - override /losses: softmax_plan
+  - override /metrics: no_metrics
+  - override /callbacks: default_planner
+  - override /visualizers: planner
+
+data:
+  use_generated_data: False
+
+trainer:
+  limit_train_batches: 0.5
+  limit_val_batches: 0.01
+
+  max_epochs: 40
+  gradient_clip_val: 1.0
+
+optimizer:
+  lr: 1.0e-4

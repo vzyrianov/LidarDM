@@ -1,0 +1,6 @@
+jsd:
+  _target_: lidardm.core.metrics.JensenShannonDivergence
+  spatial_shape: [1, 100, 100]
+
+mmd:
+  _target_: lidardm.core.metrics.MaximumMeanDiscrepancy

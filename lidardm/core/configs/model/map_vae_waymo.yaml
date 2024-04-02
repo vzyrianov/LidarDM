@@ -1,0 +1,8 @@
+_target_: lidardm.core.models.MapVAE
+num_channels: 9
+layers_per_block: 1
+block_out_channels: [64, 64, 128, 256, 512]
+down_block_types: ["DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D", "DownEncoderBlock2D"]
+up_block_types: ["UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D", "UpDecoderBlock2D"]
+
+

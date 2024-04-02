@@ -1,0 +1,5 @@
+modules:
+  mse:
+    _target_: lidardm.core.losses.SigmoidMSELoss
+    target_key: diffusion/target_noise
+    output_key: diffusion/pred_noise

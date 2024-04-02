@@ -1,0 +1,28 @@
+root: ../../_datasets/waymo_preprocessed/
+spatial_range: [-50, 50, -50, 50, -3.23, 3.77]
+voxel_size: [0.15625, 0.15625, 0.2]
+
+loaders:
+  train:
+    _target_: torch.utils.data.DataLoader
+    dataset:
+      _target_: lidardm.core.datasets.WaymoSeq
+      root: ${data.root}
+      split: train
+      spatial_range: ${data.spatial_range}
+      voxel_size: ${data.voxel_size}
+    batch_size: 2
+    num_workers: 8
+    shuffle: true
+
+  val:
+    _target_: torch.utils.data.DataLoader
+    dataset:
+      _target_: lidardm.core.datasets.WaymoSeq
+      root: ${data.root}
+      split: val
+      spatial_range: ${data.spatial_range}
+      voxel_size: ${data.voxel_size}
+    batch_size: 2
+    num_workers: 8
+    shuffle: false

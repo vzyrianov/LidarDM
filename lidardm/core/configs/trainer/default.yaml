@@ -1,0 +1,8 @@
+accelerator: gpu
+strategy: ddp
+profiler: "pytorch"
+devices: 1
+num_nodes: 1
+precision: bf16
+max_epochs: ???
+default_root_dir: ${run.dir}

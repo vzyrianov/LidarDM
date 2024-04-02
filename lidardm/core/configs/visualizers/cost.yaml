@@ -1,0 +1,10 @@
+visualizers:
+  cost_viz_gt:
+    _target_: lidardm.core.visualizers.CostVisualizer
+    output_key: "cost_gt"
+    plan: "plan"
+
+  cost_viz_predicted:
+    _target_: lidardm.core.visualizers.CostVisualizer
+    output_key: "cost_predicted"
+    plan: "predicted_plan"

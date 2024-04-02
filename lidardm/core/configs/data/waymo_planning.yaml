@@ -1,0 +1,56 @@
+root: ../../_datasets/waymo_preprocessed/
+root_generated_train: ../../_datasets/lidardm_waymo_sim_train/
+root_generated_test: ../../_datasets/lidardm_waymo_sim_test/
+
+
+
+spatial_range: [-48, 48, -48, 48, -3.15, 3.15]
+voxel_size: [0.15, 0.15, 0.18]
+
+planner_dimension: [320, 464]
+
+use_generated_data: False
+
+overfit: False
+
+loaders:
+  train:
+    _target_: torch.utils.data.DataLoader
+    dataset:
+      _target_: lidardm.core.datasets.WaymoPlanning
+      root: ${data.root}
+      root_generated: ${data.root_generated_train}
+      use_generated_data: ${data.use_generated_data}
+      spatial_range: ${data.spatial_range}
+      voxel_size: ${data.voxel_size}
+
+      planner_dimension: ${data.planner_dimension}
+
+
+      overfit: ${data.overfit}
+
+    batch_size: 8
+    num_workers: 8
+    shuffle: true
+
+  val:
+    _target_: torch.utils.data.DataLoader
+    dataset:
+      _target_: lidardm.core.datasets.WaymoPlanning
+      root: ${data.root}
+      root_generated: ${data.root_generated_test}
+      #use_generated_data: ${data.use_generated_data}
+      use_generated_data: False
+      is_testing: True
+
+      spatial_range: ${data.spatial_range}
+      voxel_size: ${data.voxel_size}
+
+      planner_dimension: ${data.planner_dimension}
+
+
+      overfit: ${data.overfit}
+      
+    batch_size: 8
+    num_workers: 8
+    shuffle: true

@@ -1,0 +1,43 @@
+# @package _global_
+
+defaults:
+  - override /data: waymo_fields
+  - override /optimizer: adamw
+  - override /scheduler: cosine
+  - override /model: vae_fields_s
+  - override /losses: default_field
+  - override /metrics: default_autoencoder
+  - override /callbacks: default
+  - override /visualizers: default
+
+metrics: 
+  miou:
+    output_key: field/recon
+    target_key: field
+    thresholds: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
+trainer:
+  limit_train_batches: 1.0
+  limit_val_batches: 0.5
+  max_epochs: 35
+  gradient_clip_val: 1.0
+
+model:
+  latent_channels: 8
+
+data:
+  loaders:
+    val:
+      batch_size: 3
+      num_workers: 4
+    train:
+      batch_size: 3
+      num_workers: 4
+
+losses:
+  weights:
+    latent: 1.0e-7
+    recon_field: 1.0
+
+optimizer:
+  lr: 1.0e-4
