@@ -6,7 +6,7 @@ For the requried packages:
 ```bash
 pip install torch==2.0.0+cu117 torchvision==0.15.1+cu117 torchaudio==2.0.1+cu117 -f https://download.pytorch.org/whl/torch_stable.html
 pip install hydra-core lightning tensorboard wandb transformers
-pip install matplotlib natsort pykdtree pyntcloud pyquaternion scikit-learn scipy tqdm open3d opencv-python
+pip install matplotlib natsort pykdtree pyntcloud pyquaternion scikit-learn scipy tqdm open3d opencv-python mediapy
 pip install diffusers==0.20.2
 pip install nksr==1.0.3+pt20cu117           -f https://nksr.huangjh.tech/whl/torch-2.0.0+cu117.html
 pip install torch-scatter==2.1.2+pt20cu117  -f https://data.pyg.org/whl/torch-2.0.0+cu117.html

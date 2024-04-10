@@ -1,8 +1,13 @@
 # LidarDM: Generative LiDAR Simulation in a Generated World
 
-[![Waymax Generation](https://img.shields.io/badge/Colab-Waymax%20Generation-blue?style=flat&logo=googlecolab)](https://colab.research.google.com/github/vzyrianov/bev-ldg/blob/main/examples/notebook_waymax.ipynb)
-[![KITTI Generation](https://img.shields.io/badge/Colab-KITTI%20Generation-blue?style=flat&logo=googlecolab)
-](https://colab.research.google.com/github/vzyrianov/bev-ldg/blob/main/examples/notebook_kitti.ipynb)
+[![Waymax Generation](https://img.shields.io/badge/-Waymax-blue?logo=googlecolab)](https://colab.research.google.com/github/vzyrianov/LidarDM/blob/main/examples/notebook_waymax.ipynb)
+[![KITTI Generation](https://img.shields.io/badge/-KITTI360-blue?logo=googlecolab)
+](https://colab.research.google.com/github/vzyrianov/LidarDM/blob/main/examples/notebook_kitti.ipynb)
+[![KITTI Generation](https://img.shields.io/badge/-arXiv-red?logo=arxiv)
+](https://arxiv.org/abs/2404.02903)
+[![KITTI Generation](https://img.shields.io/badge/-Page-grey?logo=github)
+](https://www.zyrianov.org/lidardm/)
+
 
 ![alt text](docs/assets/teaser.gif)
 
