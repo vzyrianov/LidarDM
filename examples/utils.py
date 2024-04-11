@@ -7,9 +7,8 @@ import open3d.visualization.rendering as rendering
 from lidardm.visualization import visualize_lidardm_map, render_open3d_mesh, visualize_lidar_map_aligned
 from lidardm.core.datasets.utils import decode
 from lidardm.lidar_generation.scene_composition.compositors import SceneCompositor
-from lidardm.waymax.waymax_compositor import WaymaxCompositor
 
-def get_visualization_videos(compositor: SceneCompositor, ssh=False):
+def get_visualization_videos(compositor: SceneCompositor, waymax=False, ssh=False):
   '''
   Functionalities:
   - Visualize the point cloud given a scene compositor
@@ -23,14 +22,12 @@ def get_visualization_videos(compositor: SceneCompositor, ssh=False):
   aligned_mesh_lidar_side = []
   aligned_mesh_lidar_pts = []
 
-  viz_map = (type(compositor) == WaymaxCompositor)
-  print(viz_map)
   render = rendering.OffscreenRenderer(800, 800)
 
   for i, scene in tqdm(enumerate(compositor), total=len(compositor), desc="Grabbing viz"):
 
     # get map
-    if viz_map:
+    if waymax:
       encoded_map = compositor.get_map_idx(i)
       bev_map = visualize_lidardm_map(decode(encoded_map, 13))
     
@@ -76,7 +73,7 @@ def get_visualization_videos(compositor: SceneCompositor, ssh=False):
   if ssh:
     return [aligned_map_lidar]
   
-  if viz_map:
+  if waymax:
     return [aligned_map_lidar, aligned_mesh_lidar_bev, aligned_mesh_lidar_side, aligned_mesh_lidar_pts]
   
   return [aligned_mesh_lidar_bev, aligned_mesh_lidar_side, aligned_mesh_lidar_pts]
