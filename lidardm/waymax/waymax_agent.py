@@ -259,7 +259,7 @@ class WaymaxSimpleSimulator():
         additional_lookahead_points=50,
         # max_lookahead=
         max_accel=1,
-        max_decel=4,
+        max_deccel=4,
         desired_vel=10,
         is_controlled_func=lambda state: (self.ego_mask == 0) \
                                        & (self.obj_mask == 1) \
@@ -270,7 +270,7 @@ class WaymaxSimpleSimulator():
         additional_lookahead_distance=50,
         additional_lookahead_points=50,
         max_accel=0.5,
-        max_decel=1,
+        max_deccel=1,
         desired_vel=1,
         is_controlled_func=lambda state: (self.ego_mask == 0) \
                                        & (self.obj_mask == 2) \
